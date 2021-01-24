@@ -15,9 +15,9 @@ client.on('ready',()=>{
 
 client.on('message',message=>{
     if(message.author.bot) return;
-    let latest=message.content;
+    let latest=message.content.toLowerCase();
     let oldest=JSON.parse(fs.readFileSync(`./messages/${message.member.id}.json`,'utf-8'));
-    oldest=oldest.msg;
+    oldest=oldest.msg.toLowerCase();
     fs.writeFileSync(`./messages/${message.member.id}.json`,`{"msg":"${message.content}"}`)
 
     if(latest==oldest){
